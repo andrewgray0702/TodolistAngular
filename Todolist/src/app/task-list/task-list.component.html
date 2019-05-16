@@ -1,0 +1,26 @@
+<label for="name">Name</label>
+<input id="name" [(ngModel)]='task.name' type="text" placeholder="Todo Name">
+<label for="date">Due Date</label>
+<input id="date" [(ngModel)]="task.dueDate" type="date" placeholder="Due Date">
+<button (click)="addTodo()">Add To do</button>
+
+<h2>Incomplete Tasks</h2>
+<ul>
+  <ng-container *ngFor='let todo of todos; let i = index'>
+    <li  *ngIf="!todo.completed">Name: {{todo.name}}, Due Date: {{todo.dueDate}}
+      <input type="checkbox" id="complete{{i}}" [(ngModel)]='todo.completed'>
+      <label for="complete{i}}">Mark as complete</label>
+    </li>
+  </ng-container>
+</ul>
+
+
+<h2>Complete Tasks</h2>
+<ul>
+  <ng-container *ngFor='let todo of todos; let i = index'>
+    <li  *ngIf="todo.completed">Name: {{todo.name}}, Due Date: {{todo.dueDate}}
+      <input type="checkbox" id="incomplete{{i}}" [(ngModel)]='todo.completed'>
+      <label for="incomplete{{i}}">Mark as incomplete</label>
+    </li>
+  </ng-container>
+</ul>
